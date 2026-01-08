@@ -20,10 +20,10 @@ export const dynamic = "force-dynamic";
 export default async function PastePage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }) {
-  const { id } = await params;
-  const headerList = headers();
+  const { id } = params;
+  const headerList = await headers();
   const now = getNowFromHeaders(headerList);
   const paste = await getPasteAndUpdateViews(id, now);
 
